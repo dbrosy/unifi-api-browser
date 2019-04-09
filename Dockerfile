@@ -2,7 +2,6 @@ FROM alpine
 
 LABEL MAINTAINER "Coder <code@brosy.com>"
 
-ENV VERSION=1.0.36
 ENV APP_DIR /app
 ENV WORKDIR $APP_DIR
 
