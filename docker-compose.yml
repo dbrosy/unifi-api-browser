@@ -1,0 +1,11 @@
+version: "3"
+services:
+  unifi-api-browser:
+    build: .
+    image: unifi-api-browser
+    container_name: unifi-api-broswer
+    restart: always
+    ports:
+      - "8000:8000"
+      
+      
