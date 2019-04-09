@@ -21,6 +21,6 @@ RUN cd $WORKDIR && git clone https://github.com/Art-of-WiFi/UniFi-API-browser.gi
 
 EXPOSE 8000
 
-CMD ["php", "-S", "0.0.0.0:8000", "/app"]
+CMD ["php", "-S", "0.0.0.0:8000", "-t", "/app"]
 
 
