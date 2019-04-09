@@ -8,11 +8,14 @@ ENV WORKDIR $APP_DIR
 
 # install php plus dep
 RUN apk add --no-cache \
-		php \
-		php-session \
-		php-curl \
-		composer \
-		git
+	php \
+	php-session \
+	php-curl \
+	composer \
+	git
+
+RUN set -eux; \
+	mkdir -p "$WORKDIR";
 
 RUN cd $WORKDIR && git clone https://github.com/Art-of-WiFi/UniFi-API-browser.git .
 
