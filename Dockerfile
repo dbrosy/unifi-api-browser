@@ -1,6 +1,6 @@
 FROM alpine
 
-RUN LABEL MAINTAINER "Coder <code@brosy.com>"
+LABEL MAINTAINER "Coder <code@brosy.com>"
 
 ENV VERSION=1.0.36
 ENV APP_DIR /app
@@ -12,7 +12,7 @@ RUN apk add --no-cache \
 		php-session \
 		php-curl \
 		composer \
-    git \
+		git
 
 RUN cd $WORKDIR && git clone https://github.com/Art-of-WiFi/UniFi-API-browser.git .
 
