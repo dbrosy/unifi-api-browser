@@ -8,8 +8,8 @@ ENV APP_DIR /app
 ENV WORKDIR $APP_DIR
 
 RUN set -eux; \
-  mkdir -p "$WORKDIR"; \
-  && cd $WORKDIR 
+  mkdir -p "$WORKDIR" \
+  && cd $WORKDIR
 
 # install php plus dep
 RUN apk update \
