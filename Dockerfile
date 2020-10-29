@@ -5,21 +5,31 @@ LABEL MAINTAINER "Coder <code@brosy.com>"
 ENV APP_DIR /app
 ENV WORKDIR $APP_DIR
 
-# install php plus dep
-RUN apk add --no-cache \
-	php \
-	php-session \
-	php-curl \
-	composer \
-	git
-
 RUN set -eux; \
-	mkdir -p "$WORKDIR";
+  mkdir -p "$WORKDIR";
+  && cd $WORKDIR \ 
 
-RUN cd $WORKDIR && git clone https://github.com/Art-of-WiFi/UniFi-API-browser.git .
+# install php plus dep
+RUN apk update \
+  && apk add --no-cache php php-session php-curl php-tokenizer composer git \
+  && git clone --depth 1 https://github.com/Art-of-WiFi/UniFi-API-browser.git . \
+  && apk del git \
+  && chmod +x start.sh	
 
-EXPOSE 8000
+# Define environment variable
+ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV LANG C.UTF-8
+ENV TZ Australia/Sydney
+ENV USER your unifi username
+ENV PASSWORD your unifi password
+ENV UNIFIURL https://192.168.1.1
+ENV PORT 8443
+ENV DISPLAYNAME My Site Name
+ENV APIBROWSERUSER admin
+ENV APIBROWSERPASS SHA512 hash of the password
 
-CMD ["php", "-S", "0.0.0.0:8000", "-t", "/app"]
+EXPOSE 8000/tcp
 
+# CMD ["php", "-S", "0.0.0.0:8000", "-t", "/app"]
+CMD ["sh", "./start.sh"]
 
