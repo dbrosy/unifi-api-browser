@@ -14,7 +14,7 @@ RUN set -eux; \
 # install php plus dep
 RUN apk update \
   && apk add --no-cache php php-session php-curl php-tokenizer composer git \
-  && git clone --depth 1 https://github.com/Art-of-WiFi/UniFi-API-browser.git . \
+  && git clone --depth 1 https://github.com/Art-of-WiFi/UniFi-API-browser.git \
   && apk del git \
   && chmod +x start.sh	
 
