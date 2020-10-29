@@ -2,6 +2,8 @@ FROM alpine
 
 LABEL MAINTAINER "Coder <code@brosy.com>"
 
+COPY /files .
+
 ENV APP_DIR /app
 ENV WORKDIR $APP_DIR
 
