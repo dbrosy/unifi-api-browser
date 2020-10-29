@@ -15,8 +15,7 @@ RUN set -eux; \
 RUN apk update \
   && apk add --no-cache php php-session php-curl php-tokenizer composer git \
   && git clone --depth 1 https://github.com/Art-of-WiFi/UniFi-API-browser.git \
-  && apk del git \
-  && chmod +x start.sh	
+  && apk del git
 
 # Define environment variable
 ENV PATH /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
